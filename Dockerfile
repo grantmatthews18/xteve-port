@@ -3,7 +3,10 @@ RUN apk update
 RUN apk upgrade
 RUN apk add --no-cache ca-certificates
 
-MAINTAINER alturismo alturismo@gmail.com
+# MAINTAINER alturismo alturismo@gmail.com
+
+# Environment Variables
+ENV XTEVE_PORT=34400
 
 # Extras
 RUN apk add --no-cache curl
@@ -39,7 +42,7 @@ RUN chmod +x /cronjob.sh
 RUN chmod +x /usr/bin/xteve
 
 # Expose Port
-EXPOSE 34400
+EXPOSE $XTEVE_PORT
 
 # Entrypoint
 ENTRYPOINT ["./entrypoint.sh"]
